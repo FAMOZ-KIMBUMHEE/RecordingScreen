@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.UI;
 
 
@@ -17,7 +18,7 @@ public class ReplayKitTest : MonoBehaviour
     [SerializeField] Camera cam; //녹화할 카메라
     [SerializeField] AudioClip audioClip; //영상에 들어갈 내부음원클립 <- 녹화하고자 하는 음원을 넣어주면됨
     [SerializeField] AudioSource listenerAudioSource;//녹화용 음원은 밖으로 소리가 안나오기떄문에, 음원을 두개 틀어야함. <- 리스닝용 음원
-    [SerializeField] Button startBtn, stopBtn, shareBtn;
+    [SerializeField] Button startBtn, stopBtn, shareBtn,previewBtn;
 
     //asset
     private CameraInput cameraInput;
@@ -25,11 +26,21 @@ public class ReplayKitTest : MonoBehaviour
     private IClock clock;
     private AudioSource recordAudioSource;
     private AudioInput audioInput;
-    string recordPath;
+    string recordPath = "";
+
+    void PermissionSet()
+    {
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+        }
+    }
 
     //값 초기화
     private void Start()
     {
+        PermissionSet();
+
         // Start microphone
         recordAudioSource = gameObject.AddComponent<AudioSource>();
         recordAudioSource.mute =
@@ -41,6 +52,7 @@ public class ReplayKitTest : MonoBehaviour
         stopBtn.interactable = false;
         startBtn.interactable = true;
         shareBtn.interactable = false;
+        previewBtn.interactable = false;
     }
 
     //녹화시작
@@ -61,12 +73,10 @@ public class ReplayKitTest : MonoBehaviour
         listenerAudioSource.Play();
         startBtn.interactable = false;
         stopBtn.interactable = true;
-        shareBtn.interactable = true;
-
     }
 
     //녹화종료
-    public async void StopRecording()
+    public void StopRecording()
     {
         recordAudioSource.Stop();
         listenerAudioSource.Stop();
@@ -75,21 +85,32 @@ public class ReplayKitTest : MonoBehaviour
         // Stop recording
         audioInput?.Dispose();
         cameraInput.Dispose();
-        recordPath = await recorder.FinishWriting();
+        
         // Playback recording
         SaveRecord();
-        startBtn.interactable = true;
-        stopBtn.interactable = false;
-        shareBtn.interactable = true;
 
     }
 
     //파일저장
-    public void SaveRecord()
+    public async void SaveRecord()
     {
-        Debug.Log($"Saved recording to: {recordPath}");
+        stopBtn.interactable = false;
 
-        Handheld.PlayFullScreenMovie($"file://{recordPath}");
+        recordPath = await recorder.FinishWriting();
+
+        startBtn.interactable = true;
+        shareBtn.interactable = true;
+        previewBtn.interactable = true;
+
+    }
+
+    //미리보기
+    public void Preview()
+    {
+        if(recordPath != "")
+        {
+            Handheld.PlayFullScreenMovie($"file://{recordPath}");
+        }
     }
 
     public void SharedRecord()

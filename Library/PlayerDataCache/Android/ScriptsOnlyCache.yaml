@@ -14,7 +14,6 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
-    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
@@ -55,23 +54,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1468}
     - Class: 114
-      Script: {instanceID: 1984}
+      Script: {instanceID: 1990}
     - Class: 114
-      Script: {instanceID: 2266}
+      Script: {instanceID: 2272}
     - Class: 114
-      Script: {instanceID: 2366}
+      Script: {instanceID: 2374}
     - Class: 114
-      Script: {instanceID: 2512}
+      Script: {instanceID: 2520}
     - Class: 114
-      Script: {instanceID: 2700}
+      Script: {instanceID: 2708}
     - Class: 114
-      Script: {instanceID: 2784}
+      Script: {instanceID: 2790}
     - Class: 114
-      Script: {instanceID: 2940}
+      Script: {instanceID: 2972}
     - Class: 114
-      Script: {instanceID: 2966}
-    - Class: 114
-      Script: {instanceID: 16192}
+      Script: {instanceID: 4288}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -167,6 +164,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: NativeShare.Runtime.dll
+    namespaceName: NativeShareNamespace
+    className: NSShareResultCallbackiOS
   - hash:
       serializedVersion: 2
       Hash: 800c50acba124432abb4cf0d47202e06
@@ -349,7 +352,7 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
-      Hash: 9484448c447c70c733e1b4b7f11c0637
+      Hash: d1afb5da98885a83fe1b982f34bac3a8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ReplayKitTest
@@ -517,6 +520,12 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: NativeShare.Runtime.dll
+    namespaceName: NativeShareNamespace
+    className: NSCallbackHelper
+  - hash:
+      serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -553,28 +562,16 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 494e3b0897c1853549d512c9e22d8dee
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: NatSuite.Examples
-    className: WebCam
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PermissionSetting
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: NativeShare.Runtime.dll
-    namespaceName: NativeShareNamespace
-    className: NSShareResultCallbackiOS
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: NativeShare.Runtime.dll
-    namespaceName: NativeShareNamespace
-    className: NSCallbackHelper
+      Hash: 494e3b0897c1853549d512c9e22d8dee
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: NatSuite.Examples
+    className: WebCam
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
